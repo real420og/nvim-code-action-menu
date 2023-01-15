@@ -84,6 +84,13 @@ function BaseWindow:open(window_configuration_options)
       self.focusable,
       window_configuration
     )
+
+    vim.api.nvim_win_set_option(
+      self.window_number,
+      'signcolumn',
+      'no'
+    )
+
     self.window_options = vim.api.nvim_win_get_config(self.window_number)
     vim.api.nvim_command('doautocmd User CodeActionMenuWindowOpened')
   else
